@@ -35,7 +35,7 @@ export default function HitungGajiForm() {
         {!gaji || gaji <= 0 ? (
           <div className="mt-4 p-3 bg-red-100 border-l-4 border-red-500 text-red-700">
             <p className="font-semibold text-sm">
-              Silakan masukkan gaji yang valid (tidak boleh kosong atau negatif).
+              Silakan masukkan gaji yang  (tidak boleh kosong atau negatif).
             </p>
           </div>
         ) : (
