@@ -1,33 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import { useState } from "react";
+import Dashboard from "./pages/Dashboard";
+import Header from "./layouts/Header";
+import { Route, Routes } from "react-router-dom";
+import Orders from "./pages/Orders";
+import Customers from "./pages/Customers";
+import Sidebar from "./layouts/Sidebar";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
-      <div>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="flex min-h-screen bg-gray-100">
+        {/* Sidebar di sisi kiri */}
+        <Sidebar />
+
+        {/* Konten utama di sisi kanan */}
+        <div className="flex-1 flex flex-col">
+          <Header />
+          <main className="flex-1 overflow-y-auto">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/customers" element={<Customers />} />
+            </Routes>
+          </main>
+        </div>
       </div>
-      <h1>Welcome</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

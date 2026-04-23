@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('/fonts/Barlow-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-Regular.ttf');
+}
+
+@theme {
+  --font-barlow: "Barlow", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  
+  --color-hijau: #00B074;
+  --color-latar: #f3f4f6;
+  --color-teks: #374151;
+  --color-garis: #e5e7eb;
+}
+
+body {
+  @apply font-barlow bg-latar text-teks;
+}
