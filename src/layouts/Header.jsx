@@ -23,7 +23,7 @@ export default function Header() {
         <div className="p-3 bg-red-100 rounded-2xl cursor-pointer text-red-500"><SlSettings /></div>
         
         <div className="flex items-center space-x-4 border-l pl-4 border-gray-300">
-          <span className="text-sm">Hello, <b>Fikri Muhaffizh</b></span>
+          <span className="text-sm">Hello, <b>nailong</b></span>
           <img src="https://avatar.iran.liara.run/public/28" className="w-10 h-10 rounded-full" alt="avatar" />
         </div>
       </div>

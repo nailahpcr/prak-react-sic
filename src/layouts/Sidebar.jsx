@@ -1,4 +1,4 @@
-import { MdDashboard, MdListAlt, MdPeople, MdBarChart } from "react-icons/md";
+import { MdDashboard, MdListAlt, MdPeople, MdBarChart, MdWarning } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
@@ -25,8 +25,10 @@ export default function Sidebar() {
           {[
             { name: "Dashboard", icon: <MdDashboard />, to:"/" },
             { name: "Order List", icon: <MdListAlt />, to:"/Orders" },
-            { name: "Customer", icon: <MdPeople />, to:"/Customers" },
-            { name: "Analytics", icon: <MdBarChart />, to:"/Analytics" },
+            { name: "Customers", icon: <MdPeople />, to:"/Customers" },
+            { name: "ERROR 400", icon: <MdWarning  />, to:"/error-400" },
+            { name: "ERROR 401", icon: <MdWarning  />, to:"/error-401" },
+            { name: "ERROR 403", icon: <MdWarning  />, to:"/error-403" },
           ].map((item, index) => (
             <NavLink key={index} to={item.to} className={menuClass}>
               <span className="mr-4 text-xl">{item.icon}</span>

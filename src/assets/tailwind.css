@@ -10,7 +10,7 @@
   src: url('/fonts/Poppins-Regular.ttf');
 }
 
-@theme {
+@theme{
   --font-barlow: "Barlow", sans-serif;
   --font-poppins: "Poppins", sans-serif;
   
@@ -18,7 +18,7 @@
   --color-latar: #f3f4f6;
   --color-teks: #374151;
   --color-garis: #e5e7eb;
-}
+} 
 
 body {
   @apply font-barlow bg-latar text-teks;

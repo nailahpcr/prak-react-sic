@@ -1,17 +1,39 @@
-export default function PageHeader() {
+import React from 'react';
+
+const PageHeader = ({ title, breadcrumb, children }) => {
   return (
-    <div className="flex items-center justify-between p-4 mt-4">
+    <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+      {/* KIRI: Judul dan Navigasi (Breadcrumb) */}
       <div>
-        <h1 className="text-3xl font-semibold text-gray-800">Dashboard</h1>
-        <div className="flex items-center space-x-2 mt-2 text-gray-500 font-medium">
-          <span>Dashboard</span>
-          <span>/</span>
-          <span className="text-hijau">Order List</span>
-        </div>
+        <h1 className="text-2xl font-bold text-gray-800 tracking-tight">{title}</h1>
+        
+        <nav className="text-sm text-gray-400 mt-1">
+          {Array.isArray(breadcrumb) ? (
+            <ol className="flex list-none p-0 items-center">
+              {breadcrumb.map((item, index) => (
+                <li key={index} className="flex items-center">
+                  <span className="hover:text-hijau transition-colors cursor-default">
+                    {item}
+                  </span>
+                  {/* Munculkan garis miring jika bukan item terakhir */}
+                  {index < breadcrumb.length - 1 && (
+                    <span className="mx-2 text-gray-300 font-light">/</span>
+                  )}
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <span>{breadcrumb}</span>
+          )}
+        </nav>
       </div>
-      <button className="bg-hijau text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:bg-green-600 transition">
-        + Add Button
-      </button>
+
+      {/* KANAN: Tempat khusus untuk tombol atau elemen tambahan (Children) */}
+      <div className="flex items-center gap-3">
+        {children}
+      </div>
     </div>
   );
-}
+};
+
+export default PageHeader;
