@@ -1,6 +1,5 @@
 import React, { useState } from 'react'; // Tambahkan useState
 import { FaShoppingCart, FaTruck, FaBan, FaDollarSign } from "react-icons/fa";
-import Header from "../layouts/Header";
 import { customersData } from "../data/dummyData";
 import PageHeader from "../pertemuan-5/PageHeader";
 
