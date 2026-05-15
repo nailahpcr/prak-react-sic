@@ -1,6 +1,7 @@
 import { FaShoppingCart, FaTruck, FaBan, FaDollarSign } from "react-icons/fa";
 import { ordersData } from "../data/dummyData";
 import PageHeader from "../pertemuan-5/PageHeader";
+import profileImg from "../assets/myprofile.jpg";
 
 export default function Dashboard() {
   // Logic untuk menghitung statistik secara dinamis dari dummyData
