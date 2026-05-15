@@ -11,9 +11,9 @@ import ErrorPage from "./pages/ErrorPage";
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Orders = lazy(() => import("./pages/Orders"));
 const Customers = lazy(() => import("./pages/Customers"));
-const Login = lazy(() => import("./pages/auth/login"));
-const Register = lazy(() => import("./pages/auth/register"));
-const Forgot = lazy(() => import("./pages/auth/forgot"));
+const Login = lazy(() => import("./pages/auth/Login"));
+const Register = lazy(() => import("./pages/auth/Register"));
+const Forgot = lazy(() => import("./pages/auth/Forgot"));
 const Produk = lazy(() => import("./pages/Produk"));
 const DetailProduk = lazy(() => import("./pages/DetailProduk"));
 
