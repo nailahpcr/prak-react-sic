@@ -14,6 +14,8 @@ const Customers = lazy(() => import("./pages/Customers"));
 const Login = lazy(() => import("./pages/auth/login"));
 const Register = lazy(() => import("./pages/auth/register"));
 const Forgot = lazy(() => import("./pages/auth/forgot"));
+const Produk = lazy(() => import("./pages/Produk"));
+const DetailProduk = lazy(() => import("./pages/DetailProduk"));
 
 function App() {
   const [count, setCount] = useState(0);
@@ -25,9 +27,11 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/customers" element={<Customers />} />
+          <Route path="/produk" element={<Produk />} />
+          <Route path="/produk/:id" element={<DetailProduk />} />
           <Route path="*" element={<NotFound />} />
         </Route>
-        
+
         <Route path="/error-400" element={
           <ErrorPage
             code="400"
@@ -58,6 +62,9 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgot" element={<Forgot />} />
         </Route>
+
+        <Route path="/produk" element={<Produk />} />
+        <Route path="/produk/:id" element={<DetailProduk />} />
       </Routes>
     </Suspense>
 

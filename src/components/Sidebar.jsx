@@ -1,14 +1,14 @@
-import { MdDashboard, MdListAlt, MdPeople, MdBarChart, MdWarning } from "react-icons/md";
+import { MdDashboard, MdListAlt, MdPeople, MdBarChart, MdWarning, MdInventory} from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
-        const menuClass = ({ isActive }) =>
-        `flex cursor-pointer items-center rounded-xl p-4  space-x-2
-        ${isActive ? 
-            "text-hijau bg-green-200 font-extrabold" : 
-            "text-gray-600 hover:text-hijau hover:bg-green-200 hover:font-extrabold"
-        }`
+  const menuClass = ({ isActive }) =>
+    `flex cursor-pointer items-center rounded-xl p-4  space-x-2
+        ${isActive ?
+      "text-hijau bg-green-200 font-extrabold" :
+      "text-gray-600 hover:text-hijau hover:bg-green-200 hover:font-extrabold"
+    }`
   return (
     <div className="flex min-h-screen w-90 flex-col bg-white p-10 shadow-lg">
       {/* Logo */}
@@ -23,12 +23,14 @@ export default function Sidebar() {
       <div className="mt-10">
         <ul className="space-y-3">
           {[
-            { name: "Dashboard", icon: <MdDashboard />, to:"/" },
-            { name: "Order List", icon: <MdListAlt />, to:"/Orders" },
-            { name: "Customers", icon: <MdPeople />, to:"/Customers" },
-            { name: "ERROR 400", icon: <MdWarning  />, to:"/error-400" },
-            { name: "ERROR 401", icon: <MdWarning  />, to:"/error-401" },
-            { name: "ERROR 403", icon: <MdWarning  />, to:"/error-403" },
+            { name: "Dashboard", icon: <MdDashboard />, to: "/" },
+            { name: "Order List", icon: <MdListAlt />, to: "/Orders" },
+            { name: "Customers", icon: <MdPeople />, to: "/Customers" },
+            // TAMBAHKAN MENU PRODUK DI SINI
+            { name: "Product List", icon: <MdInventory />, to: "/produk" },
+            { name: "ERROR 400", icon: <MdWarning />, to: "/error-400" },
+            { name: "ERROR 401", icon: <MdWarning />, to: "/error-401" },
+            { name: "ERROR 403", icon: <MdWarning />, to: "/error-403" },
           ].map((item, index) => (
             <NavLink key={index} to={item.to} className={menuClass}>
               <span className="mr-4 text-xl">{item.icon}</span>
