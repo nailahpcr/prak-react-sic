@@ -1,7 +1,6 @@
 import { FaBell, FaSearch } from "react-icons/fa";
 import { FcAreaChart } from "react-icons/fc";
 import { SlSettings } from "react-icons/sl";
-import profileImg from "../assets/myprofile.jpg";
 
 export default function Header() {
   return (
@@ -25,7 +24,7 @@ export default function Header() {
         
         <div className="flex items-center space-x-4 border-l pl-4 border-gray-300">
           <span className="text-sm">Hello, <b>nailong</b></span>
-          <img src={profileImg} className="w-10 h-10 rounded-full" alt="avatar" />
+          <img src="https://avatar.iran.liara.run/public/28" className="w-10 h-10 rounded-full" alt="avatar" />
         </div>
       </div>
     </div>

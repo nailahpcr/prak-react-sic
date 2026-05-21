@@ -7,6 +7,7 @@ import MainLayouts from "./layouts/MainLayouts";
 import AuthLayout from "./layouts/AuthLayout";
 import NotFound from "./pages/NotFound";
 import ErrorPage from "./pages/ErrorPage";
+import Components from "./pages/Components";
 // Lazy Loading Halaman
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Orders = lazy(() => import("./pages/Orders"));
@@ -28,6 +29,7 @@ function App() {
           <Route path="/orders" element={<Orders />} />
           <Route path="/customers" element={<Customers />} />
           <Route path="/produk" element={<Produk />} />
+          <Route path="/components" element={<Components />} />
           <Route path="/produk/:id" element={<DetailProduk />} />
           <Route path="*" element={<NotFound />} />
         </Route>
