@@ -29,6 +29,7 @@ export default function Sidebar() {
             { name: "Dashboard", icon: <MdDashboard />, to: "/" },
             { name: "Order List", icon: <MdListAlt />, to: "/Orders" },
             { name: "Customers", icon: <MdPeople />, to: "/Customers" },
+            { name: "FiturXYZ", icon: <MdPeople />, to: "/FiturXYZ" },
             { name: "Components", icon: <MdPeople />, to: "/components" },
             // TAMBAHKAN MENU PRODUK DI SINI
             { name: "Product List", icon: <MdInventory />, to: "/produk" },
