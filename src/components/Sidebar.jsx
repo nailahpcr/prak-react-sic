@@ -30,6 +30,7 @@ export default function Sidebar() {
             { name: "Order List", icon: <MdListAlt />, to: "/Orders" },
             { name: "Customers", icon: <MdPeople />, to: "/Customers" },
             { name: "Components", icon: <MdPeople />, to: "/components" },
+            { name: "Notes", icon: <MdBarChart />, to: "/notes" },
             // TAMBAHKAN MENU PRODUK DI SINI
             { name: "Product List", icon: <MdInventory />, to: "/produk" },
             { name: "ERROR 400", icon: <MdWarning />, to: "/error-400" },
