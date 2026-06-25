@@ -1,10 +1,34 @@
-import React, { useState } from 'react'; // Tambahkan useState
+import React, { useEffect, useState } from 'react'; // Tambahkan useEffect dan useState
 import { FaShoppingCart, FaTruck, FaBan, FaDollarSign } from "react-icons/fa";
 import { customersData } from "../data/dummyData";
 import PageHeader from "../pertemuan-5/PageHeader";
+import { memberAPI } from "../services/memberAPI";
+import PointsDisplay from "../components/PointsDisplay";
+import TierBadge from "../components/TierBadge";
 
 export default function Customers() {
   const [showModal, setShowModal] = useState(false); // State untuk mengontrol modal
+  const [memberMap, setMemberMap] = useState({});
+  const [isLoadingMembers, setIsLoadingMembers] = useState(true);
+
+  useEffect(() => {
+    async function loadMembers() {
+      try {
+        const members = await memberAPI.fetchAllMembers();
+        const emailMap = members.reduce((acc, member) => {
+          if (member.email) acc[member.email] = member;
+          return acc;
+        }, {});
+        setMemberMap(emailMap);
+      } catch (error) {
+        console.error('Gagal memuat member:', error);
+      } finally {
+        setIsLoadingMembers(false);
+      }
+    }
+
+    loadMembers();
+  }, []);
 
   return (
     <>
@@ -32,26 +56,45 @@ export default function Customers() {
                 <th className="p-4 border-b">Name</th>
                 <th className="p-4 border-b">Email</th>
                 <th className="p-4 border-b">Phone</th>
+                <th className="p-4 border-b">Total Poin</th>
+                <th className="p-4 border-b">Tier</th>
                 <th className="p-4 border-b">Loyalty</th>
               </tr>
             </thead>
             <tbody>
-              {customersData.map((cust) => (
-                <tr key={cust.customerId} className="hover:bg-gray-50 transition-colors text-sm border-b last:border-0">
-                  <td className="p-4 font-medium text-gray-700">{cust.customerId}</td>
-                  <td className="p-4 font-semibold text-gray-800">{cust.customerName}</td>
-                  <td className="p-4 text-gray-500">{cust.email}</td>
-                  <td className="p-4 text-gray-600">{cust.phone}</td>
-                  <td className="p-4">
-                    <span className={`px-3 py-1 rounded-lg text-xs font-bold ${
-                      cust.loyalty === 'Gold' ? 'bg-amber-100 text-amber-600' :
-                      cust.loyalty === 'Silver' ? 'bg-gray-200 text-gray-700' : 'bg-orange-100 text-orange-700'
-                    }`}>
-                      {cust.loyalty}
-                    </span>
-                  </td>
-                </tr>
-              ))}
+              {customersData.map((cust) => {
+                const member = memberMap[cust.email] || {};
+                return (
+                  <tr key={cust.customerId} className="hover:bg-gray-50 transition-colors text-sm border-b last:border-0">
+                    <td className="p-4 font-medium text-gray-700">{cust.customerId}</td>
+                    <td className="p-4 font-semibold text-gray-800">{cust.customerName}</td>
+                    <td className="p-4 text-gray-500">{cust.email}</td>
+                    <td className="p-4 text-gray-600">{cust.phone}</td>
+                    <td className="p-4">
+                      {isLoadingMembers ? (
+                        <span className="text-sm text-gray-400">Memuat...</span>
+                      ) : (
+                        <PointsDisplay points={member.total_points ?? 0} />
+                      )}
+                    </td>
+                    <td className="p-4">
+                      {isLoadingMembers ? (
+                        <span className="text-sm text-gray-400">Memuat...</span>
+                      ) : (
+                        <TierBadge tier={member.tier ?? 'Bronze'} />
+                      )}
+                    </td>
+                    <td className="p-4">
+                      <span className={`px-3 py-1 rounded-lg text-xs font-bold ${
+                        cust.loyalty === 'Gold' ? 'bg-amber-100 text-amber-600' :
+                        cust.loyalty === 'Silver' ? 'bg-gray-200 text-gray-700' : 'bg-orange-100 text-orange-700'
+                      }`}>
+                        {cust.loyalty}
+                      </span>
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>
